@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <meta charset="utf-8">
+  <title>GEOCNES</title>
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto&display=swap" rel="stylesheet">
+  <!--   <link href="https://fonts.googleapis.com/css?family=Lato|Source+Sans+Pro&display=swap" rel="stylesheet"> -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" type="text/css" href="estilo.css">
+</head>
+
+
+
+<body>
+
+  <div id="mapa"></div>
+
+  <div id="show">
+    <header>
+      <img src="images/img_cnes_logo.png" alt="Logo CNES">
+    </header>
+    <section>
+      <fieldset id="home">
+        <legend>Home</legend>
+        <h1>GEOCNES</h1>
+        <p>
+          Esta ferramenta foi desenvolvida para auxiliar os gestores do sistema CNES de todo o país no gerenciamento
+          das geolocalizações dos estabelecimentos de saúde de sua responsabilidade. Segundo a Portaria 359, de 15 de
+          março de 2019, da Secretaria de Atenção à Saúde, todos os estabelecimentos devem ter a informação de sua
+          geolocalização armazenada em seu cadastro. Com esta ferramenta é possível carregar os estabelecimentos
+          cadastrados e visualizar suas geolocalizações em um mapa. Com isto o gestor poderá não somente controlar quais
+          estabelecimento ainda não possuem a informação em seu cadastro, mas também checar se as coordenadas
+          geográficas atuais são fidedignas. Para carragar os estabelecimentos de saúde de sua gestão basta extraí-los do
+          portal do <a href="http://cnes.datasus.gov.br/pages/estabelecimentos/extracao.jsp" target="_blank">CNES</a> e 
+          carregar o arquivo baixado em formato <code>.zip</code> na aplicação. Após carregado o arquivo a
+          ferramenta possibilitará a seleção dos estabelecimentos.
+        </p>
+      </fieldset>
+      <fieldset id="arquivos">
+        <legend>Arquivos</legend>
+
+
+        <div id="status">
+          <div>
+            <input type="file" id="inputFile" accept="application/zip">
+          </div>
+
+          <div class="files">
+            <span id="labelFileLoadedZip">Arquivo zip: </span>
+            <span id="loadedFileZip">Nenhum</span>
+           
+          </div>
+          <div class="files">
+            <span id="labelFileLoadedCsv">Arquivo csv: </span>
+            <span id="loadedFileCsv">Nenhum</span>
+         
+          </div>
+        </div>
+      </fieldset>
+
+
+
+      <fieldset id="filtros">
+        <legend>Filtros</legend>
+        <label for="comboUf">Estado</label>
+        <select id="comboUf">
+          <option selected>Selecione</option>
+        </select>
+        <label for="comboMunicipio">Município</label>
+        <select id="comboMunicipio">
+          <option selected>Selecione</option>
+        </select>
+        <button id="btn-filtrar">Filtrar</button>
+      </fieldset>
+
+
+      <fieldset id="dashboard">
+        <legend>Dashboard</legend>
+
+        <div id="graficos">
+        <canvas id="grafico1"></canvas>
+        <canvas id="grafico2"></canvas>
+        </div>
+
+
+      </fieldset>
+
+      <fieldset id="resultados">
+        <legend>Resultados</legend>
+        <span id="resultadoVazio">Não há resultados para apresentar</span>
+        <table id="tabela">
+
+        </table>
+      </fieldset>
+    </section>
+    <footer>
+      <p>Desenvolvido por Jucemar Dimon</p>
+      <p>Contato: jucemar.dimon@gmail.com</p>
+      <p>beta v0.1</p>
+    </footer>
+
+
+  </div>
+
+  <script src="main.js"></script>
+  <script type="text/javascript" src="zip.js"></script>
+</body>
+
+</html>
