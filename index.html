@@ -1,28 +1,26 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
   <meta charset="utf-8">
   <title>GEOCNES</title>
-  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="shortcut icon" type="image/x-icon" href="./images/favicon.ico" />
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-  <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto&display=swap" rel="stylesheet">
-  <!--   <link href="https://fonts.googleapis.com/css?family=Lato|Source+Sans+Pro&display=swap" rel="stylesheet"> -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto&display=swap" rel="stylesheet">  
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" type="text/css" href="estilo.css">
 </head>
-
-
-
 <body>
-
   <div id="mapa"></div>
-
   <div id="show">
     <header>
       <img src="images/img_cnes_logo.png" alt="Logo CNES">
+      <div id="autor">
+        <p>Desenvolvido por Jucemar Dimon</p>
+        <p>Contato: jucemar.dimon@gmail.com</p>
+        <p>versão beta</p>
+      </div>
     </header>
     <section>
       <fieldset id="home">
@@ -30,88 +28,87 @@
         <h1>GEOCNES</h1>
         <p>
           Esta ferramenta foi desenvolvida para auxiliar os gestores do sistema CNES de todo o país no gerenciamento
-          das geolocalizações dos estabelecimentos de saúde de sua responsabilidade. Segundo a Portaria 359, de 15 de
-          março de 2019, da Secretaria de Atenção à Saúde, todos os estabelecimentos devem ter a informação de sua
-          geolocalização armazenada em seu cadastro. Com esta ferramenta é possível carregar os estabelecimentos
-          cadastrados e visualizar suas geolocalizações em um mapa. Com isto o gestor poderá não somente controlar quais
-          estabelecimento ainda não possuem a informação em seu cadastro, mas também checar se as coordenadas
-          geográficas atuais são fidedignas. Para carragar os estabelecimentos de saúde de sua gestão basta extraí-los do
-          portal do <a href="http://cnes.datasus.gov.br/pages/estabelecimentos/extracao.jsp" target="_blank">CNES</a> e 
-          carregar o arquivo baixado em formato <code>.zip</code> na aplicação. Após carregado o arquivo a
-          ferramenta possibilitará a seleção dos estabelecimentos.
-        </p>
+          das geolocalizações dos estabelecimentos de saúde de sua responsabilidade.</p>
+          <p>Segundo a Portaria 359, de 15 de
+          março de 2019, da Secretaria de Atenção à Saúde, todos os estabelecimentos devem conter a informação de sua
+          geolocalização armazenada em seu cadastro.</p>
+          <p>Com esta ferramenta é possível carregar os estabelecimentos
+          cadastrados e visualizar suas geolocalizações em um mapa. Com isto, o gestor poderá, não somente controlar quais
+          estabelecimento ainda não possuem tal informação em seu cadastro, mas também, checar se as coordenadas
+          geográficas atuais dos mesmos são fidedignas.</p>
+          <p>Para carregar os estabelecimentos de saúde de sua gestão basta extraí-los do
+          portal do <a id="link-cnes" href="http://cnes.datasus.gov.br/pages/estabelecimentos/extracao.jsp" target="_blank">CNES</a> e
+          carregar o arquivo baixado em formato <em>.zip</em> na aplicação. Após carregado o arquivo, a
+          ferramenta possibilitará a seleção dos estabelecimentos de seu município. Cabe ressaltar que
+           os arquivos com os dados dos estabelecimentos que incluem as localizações geográficas são os arquivos da competência atual. Dessa forma,
+           esta aplicação é compatível somente com arquivos da competência atual.</p>        
       </fieldset>
       <fieldset id="arquivos">
         <legend>Arquivos</legend>
-
-
         <div id="status">
           <div>
-            <input type="file" id="inputFile" accept="application/zip">
+            <input type="file" id="inputFile" accept="application/zip"><button id="btn-limpar">Limpar</button>
           </div>
-
           <div class="files">
-            <span id="labelFileLoadedZip">Arquivo zip: </span>
+            <span id="labelFileLoadedZip">Arquivo zip carregado: </span>
             <span id="loadedFileZip">Nenhum</span>
-           
           </div>
           <div class="files">
-            <span id="labelFileLoadedCsv">Arquivo csv: </span>
+            <span id="labelFileLoadedCsv">Arquivo csv descompactado: </span>
             <span id="loadedFileCsv">Nenhum</span>
-         
           </div>
         </div>
       </fieldset>
-
-
-
       <fieldset id="filtros">
         <legend>Filtros</legend>
-        <label for="comboUf">Estado</label>
-        <select id="comboUf">
-          <option selected>Selecione</option>
-        </select>
-        <label for="comboMunicipio">Município</label>
-        <select id="comboMunicipio">
-          <option selected>Selecione</option>
-        </select>
-        <button id="btn-filtrar">Filtrar</button>
+        <div class="flex">
+          <label class="flex-item-label" for="comboUf">Estado</label>
+          <select class="flex-item-form" id="comboUf">
+            <option value="selecione" selected>Selecione</option>
+          </select>
+          <label class="flex-item-label" for="comboMunicipio">Município</label>
+          <select id="comboMunicipio" class="flex-grow-1">
+            <option value="selecione" selected>Selecione</option>
+          </select>
+          <button class="flex-item-form" id="btn-filtrar">Filtrar</button>
+          <button id="btn-reset">Reset</button>
+        </div>
       </fieldset>
-
-
       <fieldset id="dashboard">
         <legend>Dashboard</legend>
-
-        <div id="graficos">
-        <canvas id="grafico1"></canvas>
-        <canvas id="grafico2"></canvas>
+        <h1 id="municipio"></h1>
+        <div id="resumo">
+          <div class="blue resumo-item">
+            <span>Total de estabelecimentos:</span>
+            <span id="blue" class="resumo-item-data"></span>
+          </div>
+          <div class="red resumo-item">
+            <span>Estabelecimentos sem geolocalização:</span>
+            <span id="red" class="resumo-item-data"></span>
+          </div>
+          <div class="green resumo-item">
+            <span>Estabelecimentos com geolocalização:</span>
+            <span id="green" class="resumo-item-data"></span>
+          </div>
+          <div class="yellow resumo-item">
+            <span>Estabelecimentos geolocalizações repetidas:</span>
+            <span id="yellow" class="resumo-item-data"></span>
+          </div>
         </div>
-
-
+        <div id="graficos">
+          <canvas id="grafico1"></canvas>
+          <canvas id="grafico2"></canvas>
+        </div>
       </fieldset>
-
       <fieldset id="resultados">
         <legend>Resultados</legend>
         <span id="resultadoVazio">Não há resultados para apresentar</span>
         <table id="tabela">
-
         </table>
       </fieldset>
     </section>
-    <footer>
-      <p>Desenvolvido por Jucemar Dimon</p>
-      <p>Contato: jucemar.dimon@gmail.com</p>
-      <p>beta v0.1</p>
-    </footer>
+  </div> 
 
-
-  </div>
-
-  <script src="main.js"></script>
-  <script type="text/javascript" src="zip.js"></script>
-  <script type="text/javascript" src="z-worker.js"></script>
-  <script type="text/javascript" src="inflate.js"></script>
-  <script type="text/javascript" src="deflate.js"></script>
+  <script type="text/javascript" src="main.js"></script>
 </body>
-
 </html>
