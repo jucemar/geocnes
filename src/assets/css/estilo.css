@@ -1,0 +1,289 @@
+html {
+  height: 100vh;
+}
+
+body {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+#map {
+  height: 100%;
+}
+
+#show {
+  background-color: #f8f9fa;
+  display: grid;
+  grid-template-rows: 115px 1fr 60px;
+  overflow: auto;
+}
+
+.table-head {
+  font-weight: bolder;
+}
+
+.td-center {
+  text-align: center;
+}
+
+.td-center>i{
+  vertical-align: middle;
+}
+
+.table-head th {
+  vertical-align: middle;
+  text-align: left;
+}
+
+#loadedFileZip, #loadedFileCsv, #selectedFile {
+  font-style: italic;
+}
+
+#labelFileLoadedZip, #labelFileLoadedCsv, #labelSelectedFile {
+  font-weight: bold;
+}
+
+section {
+
+  font-family: 'Montserrat', sans-serif;
+}
+
+header>div {
+  text-align: right;
+}
+
+header {
+  font-family: 'Montserrat', sans-serif;
+  color: #fff;
+  font-size: 11px;
+  line-height: 1.5em;
+  display: flex;
+  flex-direction: row;
+  padding: 15px;
+  background-color: #1b5fc0;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.destaque {
+  z-index: 2000;
+}
+
+fieldset {
+  margin: 10px !important;
+  background-color: #fff;
+  padding: 10px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+}
+
+fieldset>legend {
+  font-weight: bold;
+}
+
+
+
+table {
+  width: 100%;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  line-height: 1.8em;
+
+}
+
+.tr-estabelecimento {
+  cursor: pointer;
+}
+
+.tr-clicked {
+  background-color: #f1f1f1;
+}
+
+.tr-estabelecimento:hover {
+  background-color: #f1f1f1;
+  color: #000;
+}
+
+.tr-no-geo {
+  background-color: rgba(226, 21, 21, 0.267);
+}
+
+#comboUf, #comboMunicipio {
+  font-size: 12px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.info-window.title {
+  font-weight: 600;
+  font-size: 12px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.info-window p {
+  font: 400 10px 'Montserrat', 'Arial', 'sans-serif';
+}
+
+.loadMap {
+  background: url(../images/map-preloader.gif) center no-repeat #fff;
+}
+
+.load-field {
+  background: url(../images/fieldset-preloader.gif) right no-repeat #fff;
+}
+
+#filtros, #dashboard, #resultados {
+  display: none;
+}
+
+#graficos {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+#dashboard>h1 {
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 2em;
+}
+
+#dashboard>h1>small {
+  font-size: 12px;
+  font-weight: 100;
+}
+
+.resumo-item {
+  margin: 10px;
+  padding: 7px;
+  border-radius: 7px;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+.blue {
+  letter-spacing: 1px;
+  color: #FFFFFF;
+  background: #1B5FC0;
+}
+
+.red {
+  letter-spacing: 1px;
+  color: #FFFFFF;
+  background: #E21515;
+}
+
+.yellow {
+  letter-spacing: 1px;
+  color: #FFFFFF;
+  background: rgb(255, 157, 0);
+}
+
+.green {
+  letter-spacing: 1px;
+  color: #FFFFFF;
+  background: rgb(8, 140, 30);
+}
+
+.resumo-item-data {
+  font-size: 18px;
+  padding: 5px;
+}
+
+#resumo {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin-bottom: 10px;
+}
+
+em {
+  font-weight: 800;
+}
+
+#status div {
+  font-family: 'Montserrat', sans-serif;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  width: 95%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.file-success {
+  color: green;
+  font-weight: bold;
+}
+
+.file-error {
+  color: red;
+  font-weight: bold;
+}
+
+#home h1 {
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+#home p {
+  text-align: justify;
+  margin-top: 10px;
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.5em;
+  font-size: 13px;
+}
+
+.files {
+  display: none;
+}
+
+.btn-empty {
+  border: solid 1px red;
+}
+
+.flex {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.flex-item-label {
+  margin-right: 5px;
+}
+
+.flex-item-form {
+  margin-right: 15px;
+}
+
+.flex-grow-1 {
+  flex-grow: 1;
+  margin-right: 15px;
+}
+
+#link-cnes {
+  background-color: #1b5fc0;
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 15px;
+  padding: 0 5px;
+  margin: 0 4px;
+}
+
+#btn-limpar {
+  display: none;
+}
