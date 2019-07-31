@@ -33558,7 +33558,7 @@ function centralizarCidadeMapa() {
     $('#comboMunicipio').removeClass('btn-empty')
   }
   let ibge = comboMunicipio.value
-  fetch('https:jucemar.github.io/geocnes/lat-lon-munic.json').then(response => response.json()).then(json => {
+  fetch('https://jucemar.github.io/geocnes/lat-lon-munic.json').then(response => response.json()).then(json => {
     return json.find(value => {
       let s = new String(value.codigo_ibge)
       if (s.startsWith(ibge)) {
